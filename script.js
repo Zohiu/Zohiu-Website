@@ -15,7 +15,7 @@ win_button.onclick = function() {
 
 // When the user clicks anywhere outside of the start_menu, close it
 window.onclick = function(event) {
-  if (event.target == start_menu) {
+  if (event.currentTarget == start_menu) {
     start_menu.style.display = "none";
   }
 }

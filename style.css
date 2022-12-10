@@ -111,7 +111,7 @@ body {
     bottom: var(--taskbar_height);
     left: 0;
 
-    opacity: 90%;
+    opacity: 100%;
 
     width: var(--start_menu_width);
     height: var(--start_menu_height);
@@ -276,7 +276,7 @@ body {
     transform-origin: 40% 40%;
     animation: rotation 30s infinite linear;
 
-    left: 10px;
+    right: 75px;
     bottom: 50px;
 
     width: 150px;
@@ -310,13 +310,13 @@ body {
     animation: rotation 60s infinite linear;
 
     bottom: 50px;
-    left: -10px;
+    left: 100px;
 
     width: 100px;
     height: 100px;
 
     border-radius: 1000000px;
-    background-color: orange;
+    background-color: white;
 }
 
 /* Tooltip container */
