@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  run_pull:
+    name: run pull
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: install ssh keys
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: remove old version
+      run: sftp ${{ secrets.USER }}@${{ secrets.HOST }} <<< $'rm /public_html/home/*'
+    - name: upload new version
+      run: scp -r . ${{ secrets.USER }}@${{ secrets.HOST }}:/public_html/home/
+    - name: cleanup
+      run: rm -rf ~/.ssh
