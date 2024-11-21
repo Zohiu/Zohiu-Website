@@ -17,7 +17,11 @@ jobs:
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
-    - name: connect and pull
-      run: ssh ${{ secrets.USER }}:${{ secrets.PASSWORD }}@${{ secrets.HOST }} "cd /public_html/home && git checkout main && git pull && exit"
+    - name: checkout
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: connect and upload
+      run: scp -r . ${{ secrets.USER }}@${{ secrets.HOST }}/public_html/home/
     - name: cleanup
       run: rm -rf ~/.ssh
