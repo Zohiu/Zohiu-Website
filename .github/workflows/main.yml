@@ -22,6 +22,6 @@ jobs:
       with:
         fetch-depth: 0
     - name: connect and upload
-      run: scp -r . ${{ secrets.USER }}@${{ secrets.HOST }}/public_html/home/
+      run: scp -r . ${{ secrets.USER }}@${{ secrets.HOST }}:/public_html/home/
     - name: cleanup
       run: rm -rf ~/.ssh
