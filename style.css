@@ -222,6 +222,7 @@ li {
 /* Style the icons */
 .icon-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
     margin-top: 20px;
