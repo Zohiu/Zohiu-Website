@@ -1,2 +1,2 @@
-# zohiu.github.io
+# zohiu.de
 Main branch containing the page.
